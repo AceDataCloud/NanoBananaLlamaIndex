@@ -45,14 +45,6 @@ def _submitted(task_id: str) -> dict[str, Any]:
     }
 
 
-def _task_id(raw: dict[str, Any]) -> str:
-    value = raw.get("task_id") or raw.get("id")
-    data = raw.get("data")
-    if not value and isinstance(data, dict):
-        value = data.get("task_id")
-    return str(value or "")
-
-
 def _result(task_id: str, raw: dict[str, Any]) -> dict[str, Any]:
     if not raw:
         return {
@@ -80,13 +72,11 @@ def _result(task_id: str, raw: dict[str, Any]) -> dict[str, Any]:
         if isinstance(node, dict)
         for key in ("state", "status")
     }
-    if False and raw.get("finished_at") is None:
-        status, success = "pending", None
-    elif words & _FAILED or response.get("success") is False or response.get("error"):
+    if words & _FAILED or response.get("success") is False or response.get("error"):
         status, success = "failed", False
     elif words & _PENDING:
         status, success = "pending", None
-    elif response.get("success") is True or words & _DONE or (False and raw.get("finished_at") is not None):
+    elif response.get("success") is True or words & _DONE:
         status, success = "succeeded", True
     else:
         status, success = "pending", None
