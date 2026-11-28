@@ -22,7 +22,7 @@ python -m pip install "llama-index-tools-nano-banana-acedatacloud==0.1.0"
 ## 2. 注册、登录、General application 与 Token
 
 [注册/登录](https://platform.acedata.cloud?utm_source=github&utm_medium=referral&utm_campaign=evergreen&utm_content=nano_banana_llamaindex_register_zh)后进入[Applications](https://platform.acedata.cloud/console/applications?utm_source=github&utm_medium=referral&utm_campaign=evergreen&utm_content=nano_banana_llamaindex_api_key_zh)。
-找到 **General application**，没有时 **Initialize General Application**。
+找到 **General application**。
 检查 Nano Banana 当前模型权限、余额和价格；通用 Key 仍受账户权限限制，专用应用仅限指定服务。
 复制 API Key，或 **Manage Keys → Create** 创建 `LlamaIndex Nano Banana` 专用 Key。
 
